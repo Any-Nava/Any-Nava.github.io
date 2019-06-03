@@ -271,3 +271,9 @@ article h1{
     }
 	
 }
+@media (max-width: 460px) {
+	table{
+		width:100%;
+		font-size:10px;
+	}
+}
