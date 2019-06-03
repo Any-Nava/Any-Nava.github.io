@@ -5,74 +5,691 @@
   <meta charset="utf-8">
   <meta name="description" content="dataquality">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="misestilos.css">
+  <link rel="stylesheet" href="misestilos2.css">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+  <script>
+
+		$(function () {
+			$('#menu-img').click(function () {
+				$('#menu').slideToggle();
+			});
+		});
+/*
+  var visible = false;
+  function iniciar() {
+    var elemento = document.getElementById("menu-img");
+    elemento.addEventListener("click", mostrarMenu);
+  }
+  function mostrarMenu() {
+    var elemento = document.getElementById("menu");
+    if (!visible) {
+      elemento.style.display = "block";
+      visible = true;
+    } else {
+      elemento.style.display = "none";
+      visible = false;
+    }
+  }
+  window.addEventListener("load", iniciar);*/
+</script>
 
 </head>
 <body>
-<header id="cabeceralogo">
-	<div>
-   *******Técnicas para la medición de la calidad de Datos Abiertos y Enlazados
-   </div>
-  </header>
-  <main>
-  <div>
-  <section>
-    <div>
-      <article>
-        <h1>Guía de Calidad propuesta</h1>
-        <picture>
-          <source media="(resolution: 2dppx)" srcset="Imagen@2x.jpg">
-          <img src="Imagen.jpg">
-        </picture>
-		 <table>
-			<tr>
-				<th colspan="3">Fase Preliminar</th>
-			</tr>
-			<tr>
-				<td colspan="3"><p><strong>Objetivo:</strong> El objetivo de esta fase es informar sobre cuáles son los recursos debemos disponer para comenzar con las tareas posteriores relativas al proceso de conversión. 
-								  <p>(1)	Verificar si la fuente de datos provee algún mecanismo de validación para los datos. Por ejemplo, si es un archivo XML, comprobar si la fuente proporciona un fichero XSD o DTD o un espacio de nombres válido. Si no existe, crearlo teniendo en cuenta las características del dominio.</p>
-								  <p>(2)	Localizar toda la información de interés en la documentación que proporciona la fuente de datos. Es importante disponer de toda la información del dominio para lograr obtener LOD más precisos.</p>
+	<header id="cabecera">
+		<div>
+			<h1><strong>Técnicas para la medición de la calidad de Datos Abiertos y Enlazados</strong></h1>
+		</div>
+	</header>
+	<nav>
+		<div id="barra-movil">
+			<img id="menu-img" src="menu.png"/>
+		</div>
+		<ul id="menu">
+			<li id ="fondo"><a href="#"><strong>Guia de Calidad</strong></a>
+				<ul>
+					<li><a href="#fasep">Fase Preliminar</a></li>
+					<li><a href="#fase1">Fase I</a></li>
+					<li><a href="#fase2">Fase II</a></li>
+					<li><a href="#fase3">Fase III</a></li>
+					<li><a href="#fase4">Fase IV</a></li>
+					<li><a href="#ip"><em>Investigación precedente</em></a></li>
+				</ul>
+			
+			</li>
+			<li><a href="#evaluacion"><strong>Análisis de la calidad en los algoritmos actuales</strong></a></li>
+			<li class="medio"><a href="#bibliografia"><em>Bibliografía</em></a></li>
+		</ul>
+	</nav>
+	<div id="content2">
+		<main>
+			<section>
+				<div>
+					<article>
+						<h1>Guía de Calidad propuesta</h1>
+						<picture>
+							<img src="Imagen.jpg" id="imagen">
+						</picture>
+						<table id="A">
+							<tbody>
+								<tr>
+									<th colspan="3" id="fasep">Fase Preliminar</th>
+								</tr>
+								<tr>
+									<td colspan="3" class="objetivo"><strong>Objetivo:</strong> El objetivo de esta fase es informar sobre cuáles son los recursos debemos disponer para comenzar con las tareas posteriores relativas al proceso de conversión. 
+													(1)	Verificar si la fuente de datos provee algún mecanismo de validación para los datos. Por ejemplo, si es un archivo XML, comprobar si la fuente proporciona un fichero XSD o DTD o un espacio de nombres válido. Si no existe, crearlo teniendo en cuenta las características del dominio.
+													(2)	Localizar toda la información de interés en la documentación que proporciona la fuente de datos. Es importante disponer de toda la información del dominio para lograr obtener LOD más precisos.
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<th colspan="3" id="fase1">Fase I: Validación de los datos de entrada</th>
+								</tr>
+								<tr>
+									<td colspan = "3" class="objetivo"><strong>Objetivo:</strong> Realizar una correcta validación de la estructura y formato de los datos de entrada para aumentar su fiabilidad y garantizar su correcta interpretación durante el proceso de conversión a LOD. Esta tarea asegura el cumplimiento de las dimensiones Syntactic Validation & Semantic Accuracy.
+								</tr>
+								<tr>
+									<td colspan = "3" class="centrado"><strong>Problemas e Implicaciones:</strong> 
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">1</td>
+									<td><strong>P:</strong> La estructura o los datos del documento no son correctos: datos incorrectos o no colocados en el sitio que les corresponde.</td>
+									<td rowspan="2" class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong> Interpretaciones anómalas durante el proceso de conversión porque los algoritmos actuales no detectan este tipo de problemas.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">2</td>
+									<td><strong>P:</strong> Tipos de datos no correctos para algunos campos.</td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Imposibilidad de tratamiento automatizado en el futuro para esos campos.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">3</td>
+									<td><strong>P:</strong> Las restricciones esperadas en algunos campos no se cumplen.</td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Estos valores serían muy posiblemente erróneos y afectarían a la fiabilidad de los datos generados.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">4</td>
+									<td><strong>P:</strong> Valores inesperados en función de las propiedades del campo analizado.</td>
+									<td rowspan="2">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Estos valores serían muy posiblemente erróneos y afectarían a la fiabilidad de los datos generados.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">5</td>
+									<td><strong>P:</strong> Existen propiedades y valores que se contradicen con los otros datos de su dominio</td>
+									<td rowspan="2" class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Distorsiona el dominio de los datos semánticos generados e incluso puede crear información irracional tras vincular propiedades y valores.</td>
+								</tr>
+								<tr>
+									<td colspan = "3" class="centrado"><strong>Ejecución de Tareas:</strong> 
+								</tr>
+								<tr>
+									<td colspan="2"><em>Comprobar la estructura del documento:</em><br>
+									<div class="texto">
+										-	Verificar que el número de columnas y celdas de todas las filas de la tabla concuerda con el esperado.
+										Si alguna no cumple: Añadir la información que falta o quitar la que sobra. Añadir valores nulos si fuese necesario.<br>
+										-	Verificar que existen todas las celdas o encabezados o que no existan celdas desplazadas o errores en el formato de los datos, por ejemplo, inconcreciones a la hora de poner datos reales (si se utilizan ˈ; ˈ ó ˈ, ˈ a la hora de separar los datos), mezcla de formatos de representación de datos, por ejemplo, que existan valores numéricos, también en texto.
+										Todos estos errores encontrados deberán ser subsanados para continuar con la siguiente fase de la conversión.
+										Ya que no podemos controlar todos los posibles formatos, queda a responsabilidad del transformador de datos cómo validar la estructura del archivo.
+									</div>
+									</td>
+									<td class="centrado">1-5</td>
+								</tr>
+								<tr>
+									<td colspan="2"><em>Detección de valores atípicos:</em><br>
+									<div class="texto">
+										Para detectar si un valor es atípico se empleará el test de Tukey. Por cada campo de información, recogeremos sus valores y calcularemos el primer y tercer cuartil (Q1 y Q3 respectivamente). Todos los valores que no cumplan las siguientes fórmulas serán valores atípicos:<br><br>
+											 Valor >= Q1 – 3*(Q3 – Q1)<br>
+											 Valor <= Q3 + 3*(Q3 – Q1)<br><br>
+										Los valores atípicos encontrados, intentar corregirlos ya que posiblemente sean valores incorrectos, y si no es posible dejarlos con valor nulo.
+									</div>
+									</td>
+									<td class="centrado">4-5</td>
+								</tr>
+								<tr>
+									<td colspan="2"><em>Verificar que no existan valores inexactos:</em><br>
+									<div class="texto">
+										-	Uso de dependencias funcionales entre los valores de dos o más propiedades diferentes. Si se encuentran dependencias funcionales en los campos de la tabla de datos, debe verificarse que los valores de cada registro para dichos campos las satisfacen. Si no se cumple se considerará a dichos valores como inexactos.<br>
+										-	Verificar que el tipo de cada celda de datos se ajusta al dominio correspondiente, tanto en el tipo como en el rango de valores que deben ser admitidos. Por ejemplo, no podemos dar por válida una columna en que se muestre como valor de humedad ambiental 150%, ya que esta no puede nunca ser superior a 100%.<br>
+										Revisar que para cada propiedad y sus valores correspondientes cumplan con las reglas establecidas del tipo al que pertenecen. A continuación, se muestran las reglas para los tipos de atributos más generales que pueden existir en un conjunto de datos tabulados:<br>
+										-	<strong>Identificador:</strong>  Los valores de una propiedad son de tipo identificador si son los responsables de representar la identidad de cada registro. Deberá comprobarse que sean únicos para cada registro y que puede obtener datos relacionados (se utilicen con el mismo formato en otros tipos relacionados con este). Convertirlos a un formato que si cumpla lo anterior si fuese necesario.<br>
+										-	<strong>Indicador:</strong> Los valores de esta propiedad indican un estado binario (se cumple o no se cumple). Para ser válido este atributo deberá tener solo dos valores diferentes.
+										-	<strong>Código:</strong> Los valores de una propiedad son de este tipo si deben permitir enlazar cada registro con otro distinto de otro tipo.  Debe comprobarse que esta relación es posible, con lo que cada valor de este atributo debe existir como identificador en el tipo con el que se relaciona. <br>
+										-	<strong>Fecha:</strong> Este tipo se utiliza en atributos que representan fechas, horas o ambas. Debe comprobarse que el valor de fecha y/o hora es legible.
+										-	<strong>Cantidad:</strong> Este tipo se utiliza para representar valores numéricos. Debe ser legible como número del mismo tipo que el empleado en el atributo (entero, real, entero solo positivo…) y que el valor cae dentro del rango de valores aceptables (no hay una edad de 200 años). <br>
+										-	<strong>Texto:</strong> Los valores son de tipo texto si deben representar cualquier cadena alfanumérica. Estos tipos siempre serán válidos excepto que se encuentre una plantilla que deban cumplir (por ejemplo, un número de teléfono). <br>
+										-	<strong>Combinación de valores válidos:</strong> una propiedad tiene este tipo si solo hay un conjunto de valores válidos posibles. En este caso debe comprobarse que cada valor es uno de los posibles.<br>
+											<em>De este mismo modo se deben identificar y definir las reglas para el resto de los tipos de datos de la fuente. Apoyarse en la opinión de expertos o en otras fuentes de datos similares que se conocen son correctas.</em>
+										Si existen valores inexactos, corregirlos; si no fuese posible, sustituirlos por valores nulos.
+									</div>
+									</td>
+									<td class="centrado">2-3-4-5</td>
+								</tr>
+								<tr class="espacio"></tr>
+								<tr>
+									<th colspan="3" id="fase2">Fase II: Extender los datos originales</th>
+								</tr>
+								<tr>
+									<td colspan = "3" class="objetivo"><strong>Objetivo:</strong> Incluir toda la información necesaria en función del dominio al que pertenezcan los datos, para asegurar que será posible mas adelante la correcta inferencia de información a partir de estos datos por parte de los consumidores del LOD generado. Las tareas para cumplir este objetivo mejoran las dimensiones de Completeness, Interoperability, Trustworthiness and Consistency. 
+								</tr>
+								<tr>
+									<td colspan = "3" class="centrado"><strong>Problemas e Implicaciones:</strong> 
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">5</td>
+									<td><strong>P:</strong> Existe información no procesable por ordenador. </td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Se dejará de incluir información en el KG y por tanto imposibilita la creación de relaciones. Disminuye la fiabilidad y precisión de los datos generados y que puedan vincularse a otros datos.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">6</td>
+									<td><strong>P:</strong> Incompletitud del esquema. </td>
+									<td rowspan="2"class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Incompletitud del dominio en el KG generado imposibilitando la creación de nuevos tipos y por consiguiente entidades y relaciones. Disminuye la fiabilidad, precisión de los LOD y su vinculación con otros datos.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">7</td>
+									<td><strong>P:</strong> Incompletitud de la población. </td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Afecta a la completitud, fiabilidad, precisión e inferencia de relaciones en los LOD.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">8</td>
+									<td><strong>P:</strong>Incompletitud de las instancias.</td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Afecta a la completitud, fiabilidad, precisión en los LOD. Aumenta el riesgo de crear nodos pocos agrupados.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">9</td>
+									<td><strong>P:</strong>Los tipos, atributos y valores no se definen con un vocabulario relevante para el dominio.</td>
+									<td rowspan="2" class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Los LOD obtenidos no podrán vincularse a otros datos de su dominio.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">10</td>
+									<td><strong>P:</strong>Falta de evidencia en los hechos de los datos.</td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Los valores de los datos pueden estar desactualizados o erróneos y generar información inexacta o incorrecta.</td>
+								</tr>
+								<tr>
+									<td colspan = "3" class="centrado"><strong>Ejecución de Tareas:</strong> 
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Identificar campos no procesables por ordenador:</em><br>
+											-	Incluir información ofrecida a través de documentos externos, pero que sea relevante en el dominio de los datos. Debe verificarse que esta información está relacionada correctamente con los datos. Esta información debe añadirse mediante nuevos campos en las tablas de datos, de manera que sea procesable automáticamente.<br>
+											-	Verificar e incluir en los datos el uso claro de un lenguaje, símbolos, unidades, tipos de datos y definiciones, de manera que sean procesables de manera automática.<br>
+											-	Verificar que se ha incluido en los datos la temática de la fuente.
+										</div>
+									</td>
+									<td class="centrado">
+										5-6-7-8
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Verificar la completitud del esquema:</em><br>
+												Verificar que se han definido todos los conceptos y entidades con sus atributos del dominio correspondiente, buscando y añadiendo los que no se encuentren, si es posible. Apoyarse en las fuentes de datos de referencia para el dominio de los datos o mediante la opinión de expertos. Si no se encontrasen todos los datos que se estiman requeridos tras analizar las fuentes de referencia o consultar a expertos, y aun así se continua con la conversión, debe tenerse en cuenta que la LOD tendrá problemas de completitud.
+										</div>
+									</td>
+									<td class="centrado">
+										6
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Verificar la completitud de la población:</em><br>
+											Analizar en qué medida los datos se ajustan al esquema definido. Consiste en encontrar los valores nulos por 	filas. Se consideran valores nulos a una celda vacía o cuando el valor de una celda no concuerda con el tipo esperado por la columna. Para cada valor nulo debe comprobarse que no existe un valor concreto que se haya perdido y pueda recuperarse, y si así fuese se añadirá. En caso de continuar con valores nulos en las instancias, la LOD generada tendrá problemas de completitud.
+										</div>
+									</td>
+									<td class="centrado">
+										8
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Verificar el uso de un vocabulario relevante:</em><br>
+											Analizar si el uso de clases y propiedades se ajustan a alguna definición formal. Para realizar esta tarea es importante tomar como referencia, fuentes de datos reconocidas a nivel mundial. Si no es posible debido a que es un campo poco analizado, emplear los términos definidos por los expertos. Renombrar aquellas clases y propiedades que no se ajustan a los términos correctos descubiertos.
+										</div>
+									</td>
+									<td class="centrado">
+										9
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Verificar la proveniencia de los datos:</em><br>
+											Identificar el autor de cada grupo de datos y determinar su fiabilidad en base a la reputación o a las referencias que pueden ser verificadas. Los datos que no puedan ser verificados se considerarán dudosos y por tanto deben eliminarse de la fuente de datos generada, aunque esto pueda generar problemas de completitud.
+										</div>
+									</td>
+									<td class="centrado">
+										5-6-7-8
+									</td>
+								</tr>
+								<tr class="espacio">
+								</tr>
+								<tr>
+									<th colspan="3" id="fase3">Fase III: Construcción del KG</th>
+								</tr>
+								<tr>
+									<td colspan = "3" class="objetivo">
+										<strong>Objetivo:</strong> Asegurar que los datos usan un modelo de datos semántico correcto en la cual los datos estén correctamente interconectados y cumplen con todas las características que garanticen su vinculación y reutilización con otros datos semejantes. Si se han superado correctamente las fases previas hasta este punto se considera que la información es precisa, fiable y aprovechable. Las tareas para cumplir con este objetivo mejoran las dimensiones de Interconexión, Interoperabilidad y Validación Sintáctica.
+									</td>
+								</tr>
+								<tr>
+									<td colspan = "3" class="centrado">
+										<strong>Problemas e Implicaciones:</strong>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">12</td>
+									<td><strong>P:</strong> Definición incorrecta de las clases, atributos o relaciones. </td>
+									<td rowspan="2" class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Creación del KG con imprecisión del dominio siendo un impedimento para su vinculación con otros datos. Además, genera problemas de desreferenciabilidad y pérdida de la información en el grafo. </td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">13</td>
+									<td><strong>P:</strong> Definición incorrecta de las clases, atributos o relaciones. </td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Disminuye la interoperabilidad del KG: No será posible vincular todos los nodos del grafo con otros nodos de un KG del mismo dominio. Además, la semántica RDF actual de los nodos en blanco no se alinea bien con SPARQL, los interpreta como nombres <span id="b1"> [1].</span> </td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">14</td>
+									<td><strong>P:</strong> Nodos del KG mal definidos o inestables. </td>
+									<td rowspan="2" class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>La información del grafo no podrá vincularse a otros datos similares. Genera problemas de desferenciabilidad e interconexión con fuentes de datos en localizaciones distintas.</td>
+								</tr>
+								<tr>
+									<td colspan = "3" class="centrado"><strong>Ejecución de Tareas:</strong></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Definir el modelo de datos semántico:</em><br>
+											La definición del modelo de datos semántico puede realizarse empleando tecnologías existentes, como pueden ser RDF Schema o OWL. Esto facilitará el desarrollo de la aplicación al poder emplear herramientas ya desarrolladas para la gestión de esta definición. Además, deberá tenerse en cuenta que este modelo será específico para cada fuente de datos procesada, debiendo por tanto la aplicación encargada, adaptarse a trabajar con distintas definiciones.<br>
+											Definir el modelo de datos semántico:
+											La definición del modelo de datos semántico puede realizarse empleando tecnologías existentes, como pueden ser RDF Schema o OWL. Esto facilitará el desarrollo de la aplicación al poder emplear herramientas ya desarrolladas para la gestión de esta definición. Además, deberá tenerse en cuenta que este modelo será específico para cada fuente de datos procesada, debiendo por tanto la aplicación encargada, adaptarse a trabajar con distintas definiciones.<br><br>
+
+											Tenga en cuenta las siguientes propiedades generales de la ontología:<br>
+											Debe incluir de la manera propia para la ontología en cuestión metadatos específicos, como la versión, licencia y fechas, y para hacer referencia a otras ontologías.<br>
+											Debe incluir su URI correspondiente para evitar usar su ubicación como espacio de nombres, ya que esto haría al espacio de nombres cambiar al cambiar su ubicación.<br>
+											Las referencias a los términos de otra ontología deben estar definidos realmente en el espacio de nombres de dicha ontología.<br><br>
+
+											Indicar qué elementos tendrán identidad y pertenecerán a clases complejas (no serán tipos simples) y qué elementos serán simples valores:<br>
+											La diferencia entre una instancia con identidad y un valor simple radica en que la primera puede ser enlazada desde múltiples nodos del grafo, mientras que la segunda solo permitirá su uso como atributo de un nodo. Esta forma de relacionar ayuda a construir grafos más cohesionados, al haber un mayor número de elementos relacionándose directa o indirectamente.<br>
+											Se aconseja emplear una ontología previamente definida, será ésta la que nos indique qué clases y atributos usar. Permitirá generar datos correctamente interconectados. En caso de optar por esta opción nuestro modelo de datos permitirá definir fuentes de datos con buena interconexión.<br><br>
+											Si este es el caso es conveniente:<br>
+											Comprobar la precisión de la ontología. Se define como la cardinalidad de la intersección entre las clases en la ontología y las clases de la fuente de datos, dividida por el número total de clases en la ontología. Este cálculo se realiza sobre el framework de referencia Luzzu [2]. De este modo se conocerá de antemano la cantidad de clases de la fuente de datos que no está cubierta por la ontología. Esto en algunos casos puede ser por elección errónea de las clases o incompletitud de la ontología. En cualquiera de los dos casos se deberán analizar para las clases no cubiertas las mismas tareas que hemos definido cuando se va a crear una fuente de datos semántica desde cero.<br>
+											Si por el contrario necesitamos crear una fuente de datos semántica desde cero, o ampliar una fuente definida con nuevas clases y atributos, es preciso que nos aseguremos que se cumplan una serie de requisitos para asegurar una buena interconexión en los datos resultantes. Estos requisitos serán los siguientes:<br>
+											Para la elección de las clases seguir un enfoque lo más reutilizable posible: dar prioridad a las clases respecto a usar un valor intentando facilitar su integración con otras fuentes existentes. El siguiente apartado muestra un ejemplo de cómo realizar esta tarea (más conocida como mecanismo de mapeo).<br><br>
+											Se aconseja cumplir con que <span id="b2">[3]</span>:<br>
+											Cada concepto debe pertenecer a una única clase.<br>
+											Evitar la creación de superclases (clase hoja de una ontología) si no se le va a asociar ninguna instancia.<br>
+											Las clases no pueden crearse para capturar tipos sin ninguna distinción entre ellos porque carece de precisión.<br>
+											Declarar la mínima cantidad de clases posible en la que sólo contendrá una subclase y no tenga hermanos.<br>
+											Las clases no pueden ser referidas por el mismo identificador. Por ejemplo, 'hombre' puede referirse a conceptos diferentes pero relacionados, como referirse a 'la especie humana' o 'persona masculina'.<br>
+											Las subclases de una clase que están separadas entre sí (una subclase solo puede ser de un tipo), debe especificar esta separación en la ontología <span id="b3">[3]</span>.<br>
+											Todas las clases deben ser semánticamente distintas y utilizadas.<br>
+											Como parte de la definición de los atributos deberemos tener en cuenta las características del dominio. Realizar las siguientes tareas también intentando facilitar su integración con otras fuentes existentes:<br>
+											Definición de los atributos indicando su nombre y función.<br>
+											Definición de las restricciones de estos atributos.<br>
+											Definición de las cardinalidades de estos atributos.<br>
+											Siempre deben ir acompañados de su dominio y rango.<br>
+											Al igual que las clases no pueden ser referidos por el mismo identificador.<br>
+											Los atributos no deben contener información de diseño. Por ejemplo, si es un botón o una imagen porque es totalmente irrelevante para las bases de conocimiento existentes como DBPedia.<br>
+											Deben tener relación con el resto de la ontología: declarada y utilizada.<br>
+											Determinar las relaciones entre clases: Como relaciones nos referimos a relaciones de subclase o de agregación. La inclusión de relaciones vendrá impuesta en el caso de emplear una ontología previamente definida, pero deberá indicarse si no. Estas relaciones pueden facilitar la integración de nuestra fuente de datos con otras fuentes de datos externas, especialmente para aquellos tipos que definimos de manera específica para este problema.<br>
+											Las clases y sus relaciones y atributos siempre deben emplear el vocabulario relevante del dominio y hacer un uso apropiado del lenguaje, símbolos y términos. Utilizar nombres y referencias empleadas habitualmente en el contexto sobre el que se trabaja y que estén estandarizados si es posible.<br>
+											Para representar con precisión el dominio se requiere el uso correcto del tipo de relación <span id="b4">[4]</span>:<br>
+											Por ejemplo, la relación ‘rdfs: subClassOf’ está reservada para la relación de subclase, ‘rdf: type’ para objetos que pertenecen a una clase en particular, y ‘owl: sameAs’ se usa para indicar que dos instancias son equivalentes [21].<br>
+											Encontrar todas las relaciones posibles entre las clases. Apoyarse en la documentación relacionada o en la opinión de expertos.<br>
+											Una vez completada la creación de la ontología, existe el problema de saber si el nivel de agrupamiento conseguido es realmente el adecuando. Para comprobar si es así, debe recurrirse a la siguiente formula:<br><br>
+											
+											Aprupamiento_(por_nodo )=(|{e_jk }  |)/((k_i (k_(i )-1))/2)<br><br>
+										
+											donde, |{e_jk }| cuenta el número de aristas entre los vecinos del nodo y k_(i )es el grado del nodo.<br>
+											Si no se ha alcanzado un grado de agrupamiento igual a al menos el 90% del número de nodos del grafo, se debe regresar a la fase anterior e intentar ampliar la información de la fuente con el objetivo de definir más relaciones entre los nodos del grafo.<br>
+											Una vez completada la creación de la ontología, existe el problema de saber si el nivel de agrupamiento conseguido es realmente el adecuando. Para comprobar si es así, debe recurrirse a la siguiente formula:<br>
+											Para conseguir un alto grado de centralidad es necesario que todos los nodos tengan un valor de la centralidad lo más cercano posible, es decir, que exista una diferencia mínima entre el valor de la centralidad más alto que existe en el KG con el resto de los valores de centralidad calculada para cada nodo. La siguiente fórmula determina el grado de centralidad de un nodo:<br><br>
+												 
+											Centralidad=∑_(j,k)/b_jik/b_jk  <br><br>
+								 
+											donde b_jk es número de caminos más cortos desde el nodo j hasta el nodo k, y b_jik es el número de caminos más cortos desde j hasta k que pasan a través del nodo i. El sumatorio recorrerá todos los nodos presentes en el grafo.<br>
+
+											Si el grado de centralidad mayor alcanzado supera al 110% del menor, la centralidad es baja, por tanto, debe regresar a la fase anterior.<br>
+
+											Esencialmente el diseño del modelo de datos consiste en emplear una ontología existente si las características del dominio lo permiten o en caso contrario crear una nueva. Teniendo en cuenta que se va a trabajar con una estructura en concreto, información tabulada, sería más conveniente emplear una ontología de serie para representar la información. W3C ofrece una ontología estandarizada que puede ser empleada como elemento básico para información tabulada (RDF Data Cube Vocabulary). Esta reutilización garantiza el uso de una ontología bien definida que ha sido validada, y que al tratarse de una ontología especialmente diseñada para la representación de datos tabulados debería ajustarse bien a este caso.<br>
+										</div>
+									</td>
+									<td class="centrado">
+										12-13-14
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Detectar los nodos del grafo:</em><br>
+												Los distintos nodos del grafo serán las instancias de las clases previamente definidas en el modelo de datos semánticos determinado en el punto anterior. Estas instancias posteriormente (en la siguiente tarea) se almacenará en forma de tripletas en el documento RDF generado. Esta clase deberá obtener todas las instancias para cada una de las clases anteriormente definidas (al definir el modelo), y asignarle a cada uno de ellos el identificador que permitirá utilizarla.<br>
+												- En cada definición de nodo emplear un identificador universal. La experiencia de otras investigaciones aconseja el uso de URI locales coherentes [1]. Esto garantizará que los LOD estén mejor sujetos a la interconexión y reutilización. Renombrar todos los identificadores que no empleen URIs locales en su definición. De no ser posible se aconseja emplear un alias y estos deben ser desreferenciables. Una forma de conseguir esto sería establecer enlaces a los alias de URI conocidos. Para encontrar un alias de URI conocido puede apoyarse en Wikidata o DBPedia, o cualquier otra fuente de información que cuente con datos semánticos relacionados con el dominio de la fuente de datos en cuestión.<br>
+												- Los identificadores se deben definir en función de que no pueden cambiar nunca. Un nodo cuyo identificador cambia a lo largo del tiempo perderá su identidad.<br> 
+										</div>
+									</td>
+									<td class="centrado">
+										15-14
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div class="texto">
+											<em>Generar las tripletas:</em><br>
+												-	Recoger de la fuente de datos original los valores de los distintos atributos de cada nodo:<br>
+														Deberán ser los indicados por el modelo de datos semántico y deberán existir en la fuente de datos original.<br>
+												-	Si el modelo de datos y el tipo y forma de los identificadores se determinaron correctamente, no es posible incurrir en errores por cómo se realiza el rellenado de datos. La única tarea que se debe garantizar hacer correctamente es la creación de tripletas bien definidas. Por tanto:<br>
+													Se debe asegurar que la forma de representar los recursos emplea los tipos (clases) oportunos y sus valores correspondientes cumplen con la sintaxis léxica del tipo asignado.<br> 
+										</div>
+									</td>
+									<td class="centrado">
+										12
+									</td>
+								</tr>
+								<tr class="espacio"></tr>
+								<tr>
+									<th colspan="3" id="fase4">Fase IV: Validación del KG</th>
+								</tr>
+								<tr>
+									<td colspan = "3" class="objetivo"><strong>Objetivo:</strong> Comprobar que el KG generado cumple con la estructura definida en el modelo de datos semántico anterior y representa la información del dominio. Esto es fundamental para garantizar la corrección tanto del proceso de generación como de la información previamente ofrecida por la fuente de datos original. Las tareas para cumplir con este objetivo mejoran las dimensiones de Syntactic Validity, Semantic Accuracy and Consistency.  
+								</tr>
+								<tr>
+									<td colspan = "3" class="centrado"><strong>Problemas e Implicaciones:</strong> 
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">16</td>
+									<td><strong>P:</strong> Errores sintácticos en el documento RDF: el documento RDF no se generó correctamente. </td>
+									<td rowspan="2" class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Imposibilitaría el uso del documento generado. </td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">17</td>
+									<td><strong>P:</strong> El valor del objeto de un triple es defectuoso.</td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Se publica información errónea.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">18</td>
+									<td><strong>P:</strong> Tipo de dato incorrecto.</td>
+									<td rowspan="2" class="centrado">Media</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Resultados inesperados al consultar la información: información irreal.</td>
+								</tr>
+								<tr>
+									<td rowspan="2" width="30px" class="centrado">19</td>
+									<td><strong>P:</strong> Los hechos en los datos no representan el dominio correctamente.</td>
+									<td rowspan="2" class="centrado">Alta</td>
+								</tr>
+								<tr>
+									<td><strong>I:</strong>Resultados inesperados al consultar la información: información irreal o incompleta.</td>
+								</tr>
+				
+								<tr>
+									<td colspan = "3" class="centrado"><strong>Ejecución de Tareas:</strong> 
+								</tr>
+								<tr>
+									<td colspan="2">
+										<em>Validación sintáctica y semántica de los datos:</em><br>
+										<div class="texto">
+											Estas tareas podrán ser determinadas automáticamente a partir de la ontología (modelo) en cuestión. El uso de Shape Expressions <span id="b5">[5]</span> puede ser de gran ayuda para la realización de esta tarea. Existen varias demostraciones en línea para comprender el motor de validación:
+											<a href= "http://rawgit.com/shecSpec/shex.js/master/doc/shex-simple.html">Shex.js (http://rawgit.com/shecSpec/shex.js/master/doc/shex-simple.html)</a>; 
+											<a href="http:/shaclex.herokuapp.com">RDFShape (Shaclex http:/shaclex.herokuapp.com)</a>; <a href="https://www.we.org/2015/03/ShExValidata/"> ShexValidata (https://www.we.org/2015/03/ShExValidata/)</a>.
+											El modelo de los datos puede ser empleado para conformar las expresiones de validación ya que contiene los tipos, las relaciones de cardinalidad y valores que deseamos comprobar en los datos obtenidos (LOD).<br>
+											Debe construir las shape expresions a partir del modelo de los datos para realizar las siguientes validaciones:<br>
+											-	Definir y comprobar reglas sintácticas propias del formato RDF.<br>
+											-	Comprobar que los recursos del grafo pertenecen a la clase que le corresponde.<br>
+											-	Comprobar que los valores de los atributos estén léxicamente bien representados.<br>
+											-	Verificar que los tipos de datos son los esperados.
+											-	Verificar que cada nodo contiene los atributos requeridos.<br>
+											-	Verificar que las cardinalidades de los atributos son correctas: No puede haber un número de instancias o valores asociados a otra instancia que sea incompatible con lo definido en su modelo.<br>
+											-	Verificar que todas las reglas que representen relaciones entre los datos definidas se cumplen satisfactoriamente:<br>
+													(1)Las reglas propias del problema para la búsqueda incompatibilidades. Por ejemplo, declarar una regla en la que verifique que la edad de una persona es mayor que 16 años si el estado civil es casado.<br>
+													 (2)Rango de valores posibles para cada atributo.<br>
+										</div>
+									</td>
+									<td class="centrado">
+										16-17-18-19
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<em>Utilizar la inferencia de información para encontrar inconsistencia en los datos:</em><br>
+										<div class="texto">
+											-Determinar las relaciones implícitas entre los nodos. Para ello pueden relacionarse nodos dentro del LOD entre sí o aprovechar otros KB externos aprovechando el uso de identificadores desreferenciables.<br>
+											-Para cada relación entre nodos determinada en el paso anterior comprobar, ayudándose de herramientas de consulta como SPARQL o similares, que no se generan inconsistencias. Por ejemplo, comprobar que la media de CO2 en un determinado año para España es correcto, comparándola con la media calculada con los valores de CO2 de cada mes.<br>
+										</div>
+									</td>
+									<td class="centrado">
+										17-19
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</article>
+				</div>
+				<div>
+					<article>
+					<h1 id="evaluacion">Resultados obtenidos</h1>
+					<h3><em>Conceptualización y Nomenclatura</em></h3>
+					<p class="texto"><span style="color:#666666">Dimensiones de calidad:</span> Son los aspectos de calidad que se esperan cumplir en los LOD. Se analizaron aquellas las cuáles sólo tiene sentido evaluar en un proceso de transformación, por ejemplo, la dimensión de calidad Licenciamiento.<br><br> 
+									<span style="color:#666666">Técnicas de aprendizaje automático:</span> Se refiere a la forma de predecir las entidades, tipos y relaciones. A continuación, definimos algunas notaciones empleadas para identificarlas:<br>
+									<em>MLG:</em> Modelos de Lenguaje Generativo.<br>
+									<em>CNN:</em> Redes neuronales convolucionales (Convolutional Neural Networks).<br><br>
+									<span style="color:#666666">Evidencia del uso de las dimensiones:</span> Expone los motivos que justifican el uso de la dimensión de calidad durante la transformación de los datos tabulados a LOD.<br><br>
+									<span style="color:#666666">Tareas problemáticas:</span> Especifica las tareas de calidad que no se han tenido en cuenta para evitar errores en los LOD generados por los algoritmos.
 					</p>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="3">Titulo prueba</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td><p>2</p></td>
-				<td><p>3</p></td>
-			</tr>
-			<tr>
-				<td><p>1</p></td>
-				<td><p>2</p></td>
-				<td><p>3</p></td>
-			</tr>
-			<tr>
-				<td rowspan="2">12</td>
-				<td>P: Definición incorrecta de las clases, atributos o relaciones.</td>
-				<td rowspan="2">Alta</td>
-			</tr>
-			<tr>
-				<td>Implicaion</td>
-			</tr>
-		</tr>
-	  </table>
-      </article>
-    </div>
-  </section>
-  <aside>
-    <div>
-      <h1>Información</h1>
-      <p>Cita del artículo uno</p>
-      <p>Cita del artículo dos</p>
-    </div>
-  </aside>
-  </div>
-  </main>
-  <div class="recuperar"></div>
-  <footer class="seccionpie">
-    &copy; Derechos Reservados 2016
-  </footer>
+						<table id="B">
+							<tbody>
+								<tr>
+									<th rowspan="2">Dimensiones de calidad</th>
+									<th colspan="4">Técnicas de aprendizaje automáticos</th>
+								</tr>
+							
+								<tr>
+									<td>
+										<details>
+											<summary>Evidencia Local y Global</summary>
+												<p><a class="algorit" href="doc/Mentor.pdf">MENTOR</a><p>
+										</details>
+									</td>
+									<td>
+										<details>
+											<summary>Mapeo semántico</summary>
+												<a class="algorit" href="doc/TableMiner.pdf">TableMiner+</a><br>
+												<a class="algorit" href="doc/T2KM.pdf">T2K Match</a>
+										</details>
+									</td>
+									<td>
+										<details>
+											<summary>MLG</summary>
+												<a class="algorit" href="doc/languaje Models.pdf">Towards Annotating Relational Data on the Web with Language Models</a>	
+										</details>
+									</td>
+									<td>
+										<details>
+											<summary>CNN</summary>
+												<a class="algorit" href="doc/ColNet.pdf">ColNet</a>	
+										</details>
+									</td>
+								</tr>
+								<tr>
+									<td>Exactitud sintáctica</td>
+									<td>a</td>
+									<td>a</td>
+									<td>a</td>
+									<td>a</td>
+								</tr>
+								<tr>
+									<td>Exactitud semántica</td>
+									<td>a</td>
+									<td>a</td>
+									<td>a</td>
+									<td>a</td>
+								</tr>
+								<tr>
+									<td>Completitud</td>
+									<td><strong>T1</strong></td>
+									<td><strong>T1</strong></td>
+									<td><strong>T1</strong></td>
+									<td><strong>T1</strong></td>
+								</tr>
+								<tr>
+									<td>Interpretabilidad</td>
+									<td>a,b,c</td>
+									<td>a,b,c</td>
+									<td>a,b,c</td>
+									<td>a,b,c</td>
+								</tr>
+								<tr>
+									<td>Interoperabilidad</td>
+									<td>a,b,c</td>
+									<td>a,b,c</td>
+									<td>a,b,c</td>
+									<td>a,b,c</td>
+								</tr>
+								<tr>
+									<td>Interconexión</td>
+									<td><strong>T2</strong></td>
+									<td><strong>T2</strong></td>
+									<td><strong>T2</strong></td>
+									<td><strong>T2</strong></td>
+								</tr>
+								<tr>
+									<td>Confiabilidad</td>
+									<td><strong>T4</strong></td>
+									<td><strong>T4</strong></td>
+									<td><strong>T4</strong></td>
+									<td><strong>T3</strong></td>
+								</tr>
+								<tr>
+									<td>Confiabilidad</td>
+									<td><strong>T4</strong></td>
+									<td><strong>T4</strong></td>
+									<td><strong>T4</strong></td>
+									<td><strong>T4</strong></td>
+								</tr>
+								<tr>
+									<td class="centrado"colspan="5"><strong>Evidencia del uso de las dimensiones</strong></td>
+								</tr>
+								<tr>
+									<td colspan="5" class="texto">a- Utiliza los principios establecidos para los datos vinculados y emplean tipos de datos, etiquetas de idioma y vocabularios de datos vinculados que se conocen son correctos (aprovechamiento de la información en los KG existentes).</td>
+								</tr>
+								<tr>
+									<td colspan="5" class="texto">b- Clasificación y desambiguación de los valores de las celdas con éxito contra las entidades de los KB.</td>
+								</tr>
+								<tr>
+									<td colspan="5" class="texto">c- Descubren nuevas relaciones entre las columnas de las tablas.</td>
+								</tr>
+								<tr>
+									<td class="centrado" colspan="5"><strong>Tareas problemáticas</strong></td>
+								</tr>
+								<tr>
+									<td colspan="5" class="texto"><strong>T1-</strong> Trabaja con un conjunto de datos concreto e incompleto, por tanto, es una herramienta que no puede ser considerada para transformar cualquier grupo de datos tabulados a LOD.</td>
+								</tr>
+								<tr>
+									<td colspan="5" class="texto"><strong>T2-</strong>El sólo hecho de garantizar la clasificación y desambiguación de los valores de las celdas, dependiendo del conjunto de datos tabulados, puede no ser suficiente para que la interconexión tenga un buen resultado de evaluación porque puede ocurrir que para que la interconexión sea como la esperada, se necesite añadir más información al grafo.</td>
+								</tr>
+								<tr>
+									<td colspan="5" class="texto"><strong>T3-</strong> No se realiza un análisis correcto de la dimensión de confiabilidad porque se garantiza a través de cálculos (como la frecuencia de uso de la información), esto no es seguro aplicarlo para cualquier dominio de datos.</td>
+								</tr>
+								<tr>
+									<td colspan="5" class="texto"><strong>T4-</strong> No se realiza un análisis de esta dimensión.</td>
+								</tr>
+							</tbody>
+						</table>
+					</article>
+				</div>
+				<div>
+					<article>
+						<h2 id="ip">Investigación precedente</h2>
+						<p class="texto">Se identificaron un conjunto de desafíos como los pasos fundamentales para el diseño de una herramienta de calidad.</p><br>
+						<p class="centrado"> <em><strong>Imagen 2.</strong> Secuencia de pasos básicos que conforman el proceso de transformación</em>.</p>
+						<picture>
+							<img src="secuencia.jpg" id="secuencia">
+						</picture><br>
+						<p class="centrado"> <em><strong>Imagen 3.</strong> Dimensiones de calidad que participan en el proceso de transformación.</em>.</p>
+						<picture>
+							<img src="dimensiones.jpg" id="dimensiones">
+						</picture><br>
+					</article>
+				</div>
+			</section>
+		</main>
+		<aside>
+			<div>
+				<h1 id="bibliografia">Bibliografía</h1>
+				<ul>					
+					<li><a class="link" href="#b1"><strong style ="color: black">1.</strong> Aidan, H., Jürgen, U., Andreas, H., Richard, C., Axel, P., Stefan, D.: An empirical survey of linked data conformance. Web Semantics: Science, Services and Agents on the World Wide Web, 14, 14-44 (2014).</a></li>
+					<li><a class="link" href="#b2"><strong style ="color: black">2.</strong> Jeremy, D., Christoph, A., Santiago, L., Sören, A.: Luzzu-A Framework for Linked Data Quality Assessment. In 2016 IEEE Tenth International Conference on Semantic Computing (ICSC), pp. 124-131. IEEE, (2016).</a></li>
+					<li><a class="link" href="#b3"><strong style ="color: black">3.</strong> Silvio, M., Charlie, A., Jeremy, D.: Towards Ontology Quality Assessment. In MEP-DaW/LDQ@ ESWC, 94-106 (2017).</a></li>
+					<li><a class="link" href="#b4"><strong style ="color: black">4.</strong> Natalya F., N., Deborah L., M.: Ontology Development 101: A Guide to Creating Your First Ontology. Stanford Knowledge Systems Laboratory. 25 (2001).</a></li>
+					<li><a class="link" href="#b5"><strong style ="color: black">5.</strong> Jose E., L., Eric, P., Iovka, B., Dimitris, K.: Validating RDF Data, Synthesis Lectures on the Semantic Web: Theory and Technology, Vol. 7, No. 1, 1-328, DOI: 10.2200/S00786ED1V01Y201707WBE016, (2018).<br>
+					https://book.validatingrdf.com/</a></li>
+				</ul>
+			</div>
+		</aside>
+	</div>
+	<div class="recuperar"></div>
+	<footer id="pie">
+		<div>
+			<section class="seccionpie">
+				<h1>Sitio Web</h1>
+				<p>Guía de Calidad</p>
+				<p>Metodología de Calidad</p>
+			</section>
+			<section class="seccionpie">
+				<h1></h1>
+				<p></p>
+			</section>
+		</div>
+	</footer>
 </body>
 </html>

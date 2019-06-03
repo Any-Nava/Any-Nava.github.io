@@ -1,0 +1,273 @@
+
+#cabecera {
+  justify-content: center;
+  width: 96%;
+  height: 150px;
+  padding: 0% 2%;
+  background: url("p.jpeg") no-repeat;
+  background-position:right;
+  font-size: 30px;
+  border: 1px solid;
+  box-shadow: 15px 15px 20px  #514f4f ;
+  background-color: #04151e;
+  
+}
+#cabecera > div {
+  flex: 1;
+  max-width: 960px;
+  padding-top: 45px;
+  color:#E7F1F5;
+ 
+}
+
+#cabecera h1 {
+	font: bold 30px "Times New Roman";
+	color: #FFFFFF;
+	text-align: center;
+}
+h1{
+	text-align:center;
+	font-family: "Times New Roman", Arial, sans-serif;
+}
+/****************************main***********************/
+#content2 main {
+    padding: 0 22em;
+}
+
+picture {
+    text-align: center;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+}
+#menu-img{
+	border-radius:10px;
+}
+nav, aside {
+    position: fixed;
+    width: 20em;
+    top: 10em;
+	
+}
+
+nav {
+    left: 0;
+	border-radius: 5px;
+	box-shadow: 15px 15px 20px  #514f4f;	
+	
+}
+nav ul{
+	background-color:#f6f8fb;
+}
+
+nav a{
+	text-decoration: none;
+	color:black;
+}
+
+nav li{
+	list-style:none;
+	padding:0.5em;
+	
+}
+
+aside { 
+
+    right: 0;
+	box-shadow: 15px 15px 20px  #514f4f ;
+}
+aside a{
+	color:black;
+}
+.medio {
+    display: none;
+}
+/***********class link********************/
+.link{
+  text-decoration: none;
+  text-indent:0px;
+}
+/***************************Tabla**********************************/
+table {
+    width: 100%;
+}
+#A{
+	border-collapse: collapse;
+}
+
+#A td.objetivo{
+	border:none;
+	padding:2%;
+	text-indent:0px;
+	line-height:20px;
+	text-align:justify;
+	font-family: "Times New Roman", Arial, sans-serif;
+}
+
+#A td{
+	border:2px solid  #d56c52;
+	text-indent: 10px;
+	padding:1.5px;
+}
+.centrado{
+	text-align:center;
+	text-indent:0px;
+}
+#A th{
+	text-align:center;
+	font-family: Arial, sans-serif;
+	font-size:20px;
+	padding:1%;
+	background:  #d7f1f3 ;
+	border-radius: 5px;
+	margin-top:50px;
+	border-style:none;
+}
+
+#A tr {
+padding:5px;
+}
+tr.espacio{
+	height:30px;
+}
+.texto{
+	text-indent:0px;
+	padding:5px;
+	line-height:20px;
+	text-align:justify;
+	font-family: "Times New Roman", Arial, sans-serif;
+}
+
+#B{
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+#B td,th{
+	border:2px solid  #d56c52;
+	text-indent: 10px;
+	padding:1.5px;
+}
+
+#evaluacion, #ip{
+	text-align:center;
+	font-family: Arial, sans-serif;
+	font-size:20px;
+	padding:1%;
+	background:  #d7f1f3 ;
+	border-radius: 5px;
+	margin-top:50px;
+	border-style:none;
+	
+}
+.algorit{
+  font: bold 12px Arial, sans-serif;
+  text-decoration: none;
+}
+
+/*********************Bibliografia****************/
+aside ul{
+	list-style: none;
+}
+aside li {
+  margin: .5em 0;
+}
+
+
+#bibliografia {
+  font: bold 18px Arial, sans-serif;
+  color: white;
+  margin-bottom: 15px;
+  background-color:  #04151e;
+  border-radius:5px;
+  
+}
+aside li{
+	border-bottom: 1px solid #666666;
+	
+}
+article {
+  position: relative;
+  padding: 0px 40px 20px 40px;
+  border-right: 2px solid #E7F1F5;
+}
+
+article h1 {
+  margin-bottom: 5px;
+  font: bold 30px Georgia, sans-serif;
+}
+/*************************************************/
+#barra-movil {
+    display: none;
+    background-color: black;
+    text-align: right;
+}
+
+#barra-movil img {
+    height: 50px;
+}
+/************Media Queries***********************/
+@media (max-width: 1100px) {
+   
+#cabecera h1{
+	font-size:20px;
+}
+article h1{
+	font-size:15px;
+	text-align:center;
+}
+   aside {
+        position: static;
+        width: 100%;
+        padding-left: 22em;
+    }
+    #content2 main {
+        padding-right: 0;
+    }
+    .medio {
+        display: list-item;
+    }
+	article{
+		border-right:none;
+	}
+
+}
+
+@media (max-width: 700px) {
+    #barra-movil {
+        display: block;
+        position: fixed;
+        top: 0em;
+        left: 0;
+        right: 0;
+    }
+    nav {
+        top: 50px;
+        width: 100%;
+        background-color: black;
+		z-index: 1;
+    }
+    nav a { 
+        color: white;
+    }
+    nav > ul {
+        display: none;
+		
+    }
+	nav ul {
+		background-color:black;
+	}
+    nav li a {
+        display: block;
+        padding: 0.5em 0;
+    }
+    #content2 main,
+    aside {
+        padding-left: 0;
+    }
+    body {
+        padding-top: 50px;
+    }
+	
+}
