@@ -269,7 +269,9 @@ article h1{
     body {
         padding-top: 50px;
     }
-	
+	article{
+		padding:0;
+	}
 }
 @media (max-width: 460px) {
 	table{
